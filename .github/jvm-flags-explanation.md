@@ -27,7 +27,7 @@ TODO: ON teste des OS differents ???
 
 **Objectif du Test** : Mesurer les avantages du ZGC en termes de latence pour les applications nécessitant des traitements rapides, notamment lorsque la charge mémoire est élevée. ZGC est particulièrement utile dans les systèmes à haute disponibilité où chaque milliseconde compte.
 
-**Description du 4ème Garbage collector** : Ce troixème garbage collector, pour lequel j'ai eu de la difficulté à trouver de la documentation, multithread la copie de la collection, et arrête les différentes threads pendant la collections. Sa différence avec le collecteur précédant, est que celui la à un algorithme optimisé pour plus des heaps de plus de 10Gb. Le lien juste en dessous explique plus en détail leur différence.
+**Description du 4ème Garbage collector** : Ce troixème garbage collector, pour lequel j'ai eu de la difficulté à trouver de la documentation, multithread la copie de la collection, et arrête les différentes threads pendant la collections. Sa différence avec le collecteur précédant, est que celui la à un algorithme optimisé pour plus des heaps de plus de 10Gb. Le lien juste en dessous explique plus en détail leur différence. En réalité je n'ai pas executé cette option, car elle n'existait pas pour JDK 17, ce autour de quoi ce repo est construit. Je laisse les détails de mes recherches dans le readme car c'est intéressant.
 
 https://stackoverflow.com/questions/2101518/difference-between-xxuseparallelgc-and-xxuseparnewgc
 

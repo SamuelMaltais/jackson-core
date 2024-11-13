@@ -14,7 +14,7 @@ jobs:
           - "-Xms1024m -Xmx2048m -XX:+UseG1GC"
           - "-Xms512m -Xmx2048m -XX:+UseZGC"
           - "-Xms512m -Xmx2048m -XX:+UseParallelGC"
-          - "-Xms512m -Xmx2048m -XX:+UseParNewGC"
+  #- "-Xms512m -Xmx2048m -XX:+UseParNewGC" N'existe pas ?
 
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
