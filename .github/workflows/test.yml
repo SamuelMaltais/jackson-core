@@ -1,4 +1,4 @@
-name: Maven tests
+name: Maven tests !!
 
 on:
   pull_request:
