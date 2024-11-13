@@ -1,4 +1,4 @@
-name: Maven tests !!
+name: Maven tests with differents environements
 
 on:
   pull_request:
@@ -7,6 +7,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        MAVEN_OPTS:
+          - "-Xms512m -Xmx1024m"
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       - name: Set up JDK 17
@@ -16,7 +20,9 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Run Maven tests
+      - name: Run Maven tests avec des flags cette fois
+        env:
+          MAVEN_OPTS: "${{ matrix.MAVEN_OPTS }}"
         run: mvn verify
 
       - name: Get JaCoCo Coverage
