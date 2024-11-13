@@ -29,7 +29,7 @@ public class JsonGenerationExceptionTest {
 
     @Test
     public void testDeprecatedConstructorWithMessage() {
-        String message = "Test message";
+        String message = "Test message1";
         JsonGenerationException ex = new JsonGenerationException(message);
 
         assertEquals(message, ex.getMessage());
