@@ -6,7 +6,10 @@ Ce document décrit les différents paramètres JVM utilisés dans les tests. Ch
 
 Pour appliquer les flags décrit ci-dessous, et utiliser différents OS pour effectuer les tests, nous avons simplement changé le fichier test.yml et l'avons dupliqué pour différents OS.
 
+[Lien vers test.yml](https://github.com/SamuelMaltais/jackson-core/blob/jvm-flags-to-tests/.github/workflows/test.yml)
+
 # NOS FLAGS
+
 
 ## 1. Mémoire allouée
 
@@ -19,6 +22,8 @@ Pour appliquer les flags décrit ci-dessous, et utiliser différents OS pour eff
 **Résultat Exécution** : En comparant les différents temps d'exécution des pipelines, on ne voit aucun changement significatif.
 
 **Résultat Couverture** : Le coverage est identique, donc le comportement est conforme aux attentes.
+
+![img_5.png](img_5.png)
 
 ---
 
@@ -50,6 +55,8 @@ Pour appliquer les flags décrit ci-dessous, et utiliser différents OS pour eff
 
 **Résultats Couverture** : La couverture reste la même, ce qui indique un comportement attendu.
 
+![img_6.png](img_6.png)
+
 ---
 
 ## 3. Compression des pointeurs d'objets
@@ -59,6 +66,8 @@ Pour appliquer les flags décrit ci-dessous, et utiliser différents OS pour eff
 **Description** : L'option `UseCompressedOops` compresse les références d'objets, réduisant ainsi l'empreinte mémoire pour les applications fonctionnant dans un espace mémoire de moins de 32 Go. Cette configuration alloue entre 1024 Mo et 4096 Mo.
 
 **Objectif du Test** : Optimiser la gestion de la mémoire pour des applications utilisant de grandes quantités de données. Ce test évalue l'efficacité de la JVM à compresser les références, utile pour les applications manipulant intensivement des données tout en réduisant la consommation de mémoire. Les parsers étant des programmes manipulant de nombreux pointeurs, cette option pourrait impacter leur performance.
+
+![img_7.png](img_7.png)
 
 ---
 
@@ -70,6 +79,8 @@ Pour appliquer les flags décrit ci-dessous, et utiliser différents OS pour eff
 
 **Objectif du Test** : Dans un parser, de nombreuses opérations sont multithreadées. Changer la priorité des opérations aide à vérifier si des race conditions peuvent être déclenchées. Cela permet aussi d'évaluer les performances du multithreading avec des priorités différentes.
 
+![img_9.png](img_9.png)
+
 ---
 
 ## 5. Taille des piles de threads – Plus de StackOverflows !
@@ -80,9 +91,14 @@ Pour appliquer les flags décrit ci-dessous, et utiliser différents OS pour eff
 
 **Objectif du Test** : Dans un parser, qui effectue souvent de nombreuses opérations récursives ou profondes, réduire la taille de la pile peut aider à identifier les points de défaillance potentiels dus à une allocation de mémoire limitée pour chaque thread. Ce test permet de vérifier la gestion de la mémoire des threads par le parser et de détecter les erreurs de dépassement de pile dans un environnement à forte charge.
 
+![img_8.png](img_8.png)
+
+
 ## TESTS SUR DES DIFFERENTS OS | BONUS NECESSAIRE EN NOTRE OPINION
 
 **Justification**: Tester un code sur différents systèmes d'exploitation (OS) est une méthode efficace pour renforcer sa robustesse et garantir sa compatibilité dans des environnements variés. Chaque OS, qu'il s'agisse de Windows, macOS ou Linux, gère la mémoire, les processus, et les threads de manière légèrement différente. Ces variations peuvent révéler des comportements inattendus, des bugs spécifiques à un système, ou des problèmes de performances. En testant sur plusieurs OS, il est possible d'identifier et de corriger des erreurs qui ne se manifestent que dans certains environnements, ce qui permet de rendre le code plus stable et fiable. Cette approche assure que l'application fonctionnera correctement pour une audience plus large, quel que soit le système utilisé, tout en optimisant les performances pour chacun d'eux.
+
+![img_10.png](img_10.png)
 
 ## Documentation humoristique
 
@@ -90,3 +106,4 @@ Nous avons ajouté des mèmes dans cette page et modifié les noms des builds de
 
 - "Maven tests avec différents environnements et drapeaux JVM, mais pas le drapeau français"
 - "Exécution de tests Maven avec des flags, mais pas dans un parc Six Flags."
+- "Nous avons appelé Mac le inferior OS, petite taquinette d'un utilisateur de windows"
