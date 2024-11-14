@@ -8,6 +8,18 @@ Pour appliquer les flags décrit ci-dessous, et utiliser différents OS pour eff
 
 [Lien vers test.yml](https://github.com/SamuelMaltais/jackson-core/blob/jvm-flags-to-tests/.github/workflows/test.yml)
 
+Voici un exemple de log produit par notre nouvelle action Github. Nous utilisons ceux-ci quand nous  comparons les performances. Voici un exemple de ces artéfacts:
+
+![img_11.png](img_11.png)
+
+On peut trouver ces artéfacts ici:
+
+![img_12.png](img_12.png)
+
+Voici un lien vers un workflow qui à fonctionné:
+
+https://github.com/SamuelMaltais/jackson-core/actions/runs/11845691974
+
 # NOS FLAGS
 
 
