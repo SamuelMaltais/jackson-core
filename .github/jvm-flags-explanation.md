@@ -2,7 +2,11 @@
 
 Ce document décrit les différents paramètres JVM utilisés dans les tests. Chaque configuration simule un environnement unique pour tester divers aspects de la gestion de la mémoire et des performances de la JVM.
 
-## TODO : Tester sur des systèmes d’exploitation différents ?
+## Modification des actions Github
+
+Pour appliquer les flags décrit ci-dessous, et utiliser différents OS pour effectuer les tests, nous avons simplement changé le fichier test.yml et l'avons dupliqué pour différents OS.
+
+# NOS FLAGS
 
 ## 1. Mémoire allouée
 
