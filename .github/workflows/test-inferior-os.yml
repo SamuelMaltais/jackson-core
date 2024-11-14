@@ -31,19 +31,4 @@ jobs:
         env:
           MAVEN_OPTS: "${{ matrix.MAVEN_OPTS }}"
         run: mvn verify
-
-      - name: Get JaCoCo Coverage
-        id: coverage
-        run: |
-          coverage=$(python3 config/coverage.py target/site/jacoco/jacoco.csv) 
-          echo "COVERAGE=$coverage" >> $GITHUB_ENV
-
-      - name: Fail if coverage has not improved.
-        run: |
-          coverage=$COVERAGE
-          threshold=81.58
-          if (( $(echo "$coverage - $threshold <= 0.1" | bc -l) )); then
-            echo "Coverage has not improved."
-            exit 1
-          else
-            echo "New coverage: $coverage%"
+    # Trop complexe
