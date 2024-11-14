@@ -1,0 +1,36 @@
+name: Maven tests with different environments and JVM flags WINDOWS
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        MAVEN_OPTS:
+          - "-Xms512m -Xmx1024m"
+          - "-Xms1024m -Xmx2048m -XX:+UseG1GC"
+          - "-Xms512m -Xmx2048m -XX:+UseZGC"
+          - "-Xms512m -Xmx2048m -XX:+UseParallelGC"
+          - "-Xms1024m -Xmx4096m -XX:+UseCompressedOops"
+          - "-Xss256k"
+          - "-XX:+UseThreadPriorities"
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+
+      - name: Run Maven tests with flags, but not in a Six Flags park.
+        env:
+          MAVEN_OPTS: "${{ matrix.MAVEN_OPTS }}"
+        # On Windows, use `mvn.cmd` instead of `mvn`
+        run: mvn.cmd verify
+
+        # Trop complexe de run coverage sur windows

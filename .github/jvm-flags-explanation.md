@@ -76,6 +76,10 @@ Ce document décrit les différents paramètres JVM utilisés dans les tests. Ch
 
 **Objectif du Test** : Dans un parser, qui effectue souvent de nombreuses opérations récursives ou profondes, réduire la taille de la pile peut aider à identifier les points de défaillance potentiels dus à une allocation de mémoire limitée pour chaque thread. Ce test permet de vérifier la gestion de la mémoire des threads par le parser et de détecter les erreurs de dépassement de pile dans un environnement à forte charge.
 
+## TESTS SUR DES DIFFERENTS OS | BONUS NECESSAIRE EN NOTRE OPINION
+
+**Justification**: Tester un code sur différents systèmes d'exploitation (OS) est une méthode efficace pour renforcer sa robustesse et garantir sa compatibilité dans des environnements variés. Chaque OS, qu'il s'agisse de Windows, macOS ou Linux, gère la mémoire, les processus, et les threads de manière légèrement différente. Ces variations peuvent révéler des comportements inattendus, des bugs spécifiques à un système, ou des problèmes de performances. En testant sur plusieurs OS, il est possible d'identifier et de corriger des erreurs qui ne se manifestent que dans certains environnements, ce qui permet de rendre le code plus stable et fiable. Cette approche assure que l'application fonctionnera correctement pour une audience plus large, quel que soit le système utilisé, tout en optimisant les performances pour chacun d'eux.
+
 ## Documentation humoristique
 
 Nous avons ajouté des mèmes dans cette page et modifié les noms des builds de manière humoristique tout en gardant leur signification.
