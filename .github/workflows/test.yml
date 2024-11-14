@@ -15,7 +15,7 @@ jobs:
           - "-Xms512m -Xmx2048m -XX:+UseZGC"
           - "-Xms512m -Xmx2048m -XX:+UseParallelGC"
           - "-Xms1024m -Xmx4096m -XX:+UseCompressedOops"
-          - "-Xss500"
+          - "-Xss256k"
   #- "-Xms512m -Xmx2048m -XX:+UseParNewGC" N'existe pas ?
 
     steps:
