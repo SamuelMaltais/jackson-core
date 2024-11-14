@@ -1,4 +1,4 @@
-name: Maven tests with differents environements
+name: Maven tests with differents environements et drapeaux JVM, mais pas le drapeau Français
 
 on:
   pull_request:
@@ -28,7 +28,7 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      - name: Run Maven tests avec des flags cette fois
+      - name: Run Maven tests avec des flags, mais pas dans un parc Six Flags.
         env:
           MAVEN_OPTS: "${{ matrix.MAVEN_OPTS }}"
         run: mvn verify
