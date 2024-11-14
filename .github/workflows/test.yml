@@ -28,6 +28,9 @@ jobs:
           distribution: "temurin"
           cache: maven
 
+      - name: Capture Start Time
+        run: echo "START_TIME=$(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
+
       - name: Run Maven tests avec des flags, mais pas dans un parc Six Flags.
         env:
           MAVEN_OPTS: "${{ matrix.MAVEN_OPTS }}"
@@ -49,3 +52,16 @@ jobs:
           else
             echo "New coverage: $coverage%"
           fi
+
+      - name: Log Run Time and Coverage
+        run: |
+          echo "Start Time: $START_TIME" > run_log.txt
+          echo "End Time: $(date '+%Y-%m-%d %H:%M:%S')" >> run_log.txt
+          echo "Coverage: $COVERAGE%" >> run_log.txt
+        shell: bash
+
+      - name: Upload Log as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: run-log
+          path: run_log.txt
