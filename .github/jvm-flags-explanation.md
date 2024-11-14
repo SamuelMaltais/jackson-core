@@ -2,8 +2,7 @@
 
 Ce document décrit les différents paramètres JVM utilisés dans les tests. Chaque configuration simule un environnement unique pour tester divers aspects de la gestion de la mémoire et des performances de la JVM.
 
-TODO: ON teste des OS differents ???
----
+## TODO: ON teste des OS differents ???
 
 ## 1. Avec des mémoires variées
 
@@ -30,7 +29,7 @@ TODO: ON teste des OS differents ???
 
 https://stackoverflow.com/questions/2101518/difference-between-xxuseparallelgc-and-xxuseparnewgc
 
-**Objectif du Test** : Pour des ordinateurs multicores (maintenant standard) on veut que nos programmes executent de façon multithreaded, et cela même si ils n'ont pas beaucoups de RAM. Nous voulons observer dans ce cas la performance du github action en restraignant la mémoire disponible, pour assurer l'éfficacité du programme sous ces conditions. 
+**Objectif du Test** : Pour des ordinateurs multicores (maintenant standard) on veut que nos programmes executent de façon multithreaded, et cela même si ils n'ont pas beaucoups de RAM. Nous voulons observer dans ce cas la performance du github action en restraignant la mémoire disponible, pour assurer l'éfficacité du programme sous ces conditions.
 
 ---
 
@@ -41,3 +40,7 @@ https://stackoverflow.com/questions/2101518/difference-between-xxuseparallelgc-a
 **Objectif du Test** : Optimiser la gestion de la mémoire pour des applications utilisant de grandes quantités de données. Ce test évalue l'efficacité de la JVM à compresser les références et peut être utile pour les applications nécessitant une manipulation intensive de données tout en réduisant la consommation de mémoire. Toutefois, ayant beaucoup de mémoire disponible, nous voulons nous assurer que cette option ne causera pas de baisse de performance. Un parser est un programme qui contient des énormes quantité de pointers, et donc si leur quantité est très grande, peut être que ce flag pourrait causer problème.
 
 ---
+
+## 4. Use thread priorities, utile pour les race conditions
+
+**Objectif du test** Dans un parser, énormement des operations sont multithreaded. Changer la priorité des opérations est utile pour vérifier si nous pouvons trigger des race conditions. Nous pouvons également évaluer la performance de notre multithreading avec une différente priorité.
